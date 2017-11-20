@@ -4,23 +4,52 @@
   <meta charset="UTF-8">
   <style>
   body{
-    width: 300px;
+    width: 400px;
     margin: 0;
     padding:1rem;
   }
-
+  #forceSaveItem{
+    font-weight: bold;
+  }
   </style>
+  <script type="text/javascript" src="jquery-3.2.1.js"></script>
+  <link rel="stylesheet" href="bootstrap\bootstrap-4.0.0-beta.2-dist\css\bootstrap.min.css">
+ 
 </head>
 <body>
-  <h2>나무위키 편집 미리보기</h2>
+  <h5 class="alert alert-primary" role="alert">beta 나무위키 편집 미리보기</h5>
   <div>
-    <h3>사용법</h3>
-    <ol>
+    <dt id="tip">#미리보기 사용법</dt> 
+    <ol id="tipList">
       <li>나무위키에 접속한다.</li>
       <li>편집을 누른다.</li>
       <li>편집화면에서 편집 후 <strong>Alt + `</strong> (숫자 1번 옆의 키입니다.)</li>
       <li>preview 창이 뜬다.</li>
     </ol>
   </div>
+  <div>
+    <dt>#현재문서<div id="targetUrl" class="alert alert-danger" role="alert"></div></dt>
+    <div id="forceSave">
+      <dt>##수동 저장 : Alt + s</dt>
+      <div id="forceSaveItem" class="alert alert-success" role="alert"></div>
+    </div>
+    <div id="saveList">
+      <dt>##현재시간 : <span id="currentTime">시간</span></dt>
+      <dt>##자동저장</dt>
+      <div id="display">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">저장시간  </th>
+            </tr>
+          </thead>
+          <tbody id="listbody">
+          </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="popup.js"></script>
+  <script src="bootstrap/bootstrap-4.0.0-beta.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html
