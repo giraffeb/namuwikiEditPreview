@@ -1,8 +1,4 @@
 <meta name="google-site-verification" content="MHkBFR_NWOsfzwRAUJHagvbRtgOjKrMzdQ1MhukqhdE" />
-<<<<<<< HEAD
-=======
-
->>>>>>> 13095cbbae7e5fb9525b368af86ec6a2bc4238fb
 # 나무위키 편집 미리보기
 
 ### 소개
