@@ -46,7 +46,7 @@ background.js에서 처리하자.
 */
 function isDiff(){
   //현재 content 값
-  var content = $("#textInput").val();
+  var content = $("textarea[name=text]").val();
 
   var v = sha256(content)
           .then(function(cur /* content로 구한 hash값*/){
@@ -64,7 +64,7 @@ function isDiff(){
             return Promise.resolve(flag);
           }).then(function(flag){
             if(flag == true){
-              var contentVal = $("#textInput").val();
+              var contentVal = $("textarea[name=text]").val();
               
               //send to background.js
               chrome.runtime.sendMessage(
@@ -78,7 +78,7 @@ function isDiff(){
 //사용자가 저장을 요청한다. 문서가 변경되지 않아도 저장한다.
 function forceSaveContent(){
  //TODO 구현하시오.
-  var contentVal = $("#textInput").val();
+  var contentVal = $("textarea[name=text]").val();
  
  //send to background.js
  chrome.runtime.sendMessage(
@@ -148,7 +148,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
   console.log("content script get message");
   if(request.action == "contentRecover"){
     //TODO : undo stack에 덮어쓰기 전 데이터를 남길 수 있을까?
-    $("#textInput").val(request.content);
+    console.log(request.content);
+    $("textarea[name=text]").val(request.content);
   }
 });
 
@@ -158,7 +159,7 @@ window.onload = function(){
   //사이트 최초 로드시에는 저장하자.
   chrome.runtime.sendMessage({action : "init", content : document.location.href});
   
-  var contentVal = $("#textInput").val();
+  var contentVal = $("textarea[name=text]").val();
   sha256(contentVal)
   .then(function(cur /* content로 구한 hash값*/){
     localStorage.setItem("pre", cur);

@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "namuwikiEditPreview",
   "description": "나무위키 편집 미리보기",
-  "version": "1.1",
+  "version": "1.11",
 
   "browser_action": {
     "default_icon": "icon.png",

@@ -48,7 +48,7 @@ function drawSaveList(){
     if(force == null){
       force = "수동저장된 문서가 없습니다.";
     }else{
-      $("#forceSaveItem").bind("click", logClick);
+      $("#forceSaveItem").unbind("click").bind("click", forceClick);
     }
 
     msg = $("#listbody");
@@ -81,7 +81,15 @@ function logClick(){
   }else{
     //취소
   }
-  
+}
+
+function forceClick(){
+  var flag = confirm("본문의 내용을 해당 시점으로 돌리겠습니까?" + this.innerHTML);
+  if(flag == true){
+    setContentFromLocalStorage(localStorage["current"]+"forceContent");
+  }else{
+    //취소
+  }
 }
 
 function setContentFromLocalStorage(key){
